@@ -1,0 +1,74 @@
+<?php
+//链表节点
+class Node {
+	//节点id
+	public $id;
+	//节点名称
+	public $name;
+	//下一节点
+	public $next;
+	public function __construct($id, $name) {
+		$this->id = $id;
+		$this->name = $name;
+		$this->next = null;
+	}
+}
+
+//单链表
+class SingelLinkList {
+	private $header; //链表头节点
+	public function __construct($id = null, $name = null) {
+		$this->header = new node ($id, $name, null);
+	}
+	//添加节点数据
+	public function addLink($node) {
+		$current = $this->header;
+		while ($current->next != null ) {
+			if($current->next->id > $node->id) {
+				break;
+			}
+			$current = $current->next;
+		}
+		$node->next = $current->next;
+		$current->next = $node;
+		//echo "--add : --\n";var_dump($current);
+	}
+
+	//获取链表
+	public function getLinkList() {
+		$current = $this->header;
+		//echo "--getLinkList : --\n";var_dump($current);
+		$str = "链表为空!";
+		if($current->next == null) {
+			return $str;
+		}
+		$arr = array();
+		while($current->next != null ) {
+			$id = $current->next->id;
+			$name = $current->next->name;
+			// $current = $current->next->next;
+			// echo "--current->next : -- \n";var_dump($current);
+			$arr[] = array(
+				'id' => $id, 
+				'name' => $name, 
+				);
+			if ($current->next->next == null) {
+				break;
+			}
+			$current = $current->next;
+		}
+		$str = "\n";
+		foreach ($arr as $k => $v) {
+			$str .= "id : ".$v['id'].", name : ".$v['name']."\n";
+		}
+		return $str;
+	}
+}
+
+$lists = new SingelLinkList();
+$lists->addLink(new Node(5, 'eeeeee'));
+$lists->addLink(new Node(1, 'aaaaaa'));
+$lists->addLink(new Node(6, 'ffffff'));
+$lists->addLink(new Node(2, 'bbbbbb'));
+$lists->addLink(new Node(3, 'cccccc'));
+echo $lists->getLinkList();
