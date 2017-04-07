@@ -19,7 +19,9 @@ class SingelLinkList {
     //添加节点数据
     public function addLink($node) {
         $current = $this->header;
-        $node->next = $current->next;
+        while($current->next != null) {
+            $current = $current->next;
+        }
         $current->next = $node;
     }
     //获取链表长度
