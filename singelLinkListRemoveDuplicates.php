@@ -126,27 +126,57 @@ class SingelLinkList {
         if($current->next == null) {
             return $str;
         }
-        while($current->next != null) {
-            if($current->next->val == $current->next->next->val) {
-                $current->next->next = $current->next->next->next;
+        $current = $current->next;
+        return $this->RemoveDuplicatesLinkNodeRecursion($current);
+    }
+    //递归
+    public function RemoveDuplicatesLinkNodeRecursion($current) {
+        if($current->next != null) {
+            if($current->val == $current->next->val) {
+                $current->next = $current->next->next;
+                return $this->RemoveDuplicatesLinkNodeRecursion($current);
             }
-            $current = $current->next;
+            return $this->RemoveDuplicatesLinkNodeRecursion($current->next);
         }
-
+    }
+    //删除排过序的重复元素（while）
+    public function RemoveDuplicatesLinkNodeByWhile() {
+        $current = $this->header;
+        $str = "链表为空!";
+        if($current->next == null) {
+            return $str;
+        }
+        while($current->next != null) {
+            $current = $current->next;
+            while($current->val == $current->next->val) {
+                $current->next = $current->next->next;
+            }
+        }
     }
 }
 $a = new Node(1);
 $b = new Node(1);
-$c = new Node(2);
-$d = new Node(3);
+$c = new Node(1);
+$d = new Node(2);
 $e = new Node(3);
+$f = new Node(3);
+$g = new Node(3);
+$h = new Node(3);
+$i = new Node(4);
+$j = new Node(4);
 $lists = new SingelLinkList();
 $lists->addLink($a);
 $lists->addLink($b);
 $lists->addLink($c);
 $lists->addLink($d);
 $lists->addLink($e);
+$lists->addLink($f);
+$lists->addLink($g);
+$lists->addLink($h);
+$lists->addLink($i);
+$lists->addLink($j);
 //$lists->delLinkNode($c);
 //$lists->delLinkNode2($b);
-echo $lists->RemoveDuplicatesLinkNode();
+//echo $lists->RemoveDuplicatesLinkNode();
+echo $lists->RemoveDuplicatesLinkNodeByWhile();
 echo $lists->getLinkListVal();
