@@ -120,27 +120,27 @@ class SingelLinkList {
         $node->next = $node->next->next;
     }
     //删除排过序的重复元素
-    public function RemoveDuplicatesLinkNode() {
+    public function removeDuplicatesLinkNode() {
         $current = $this->header;
         $str = "链表为空!";
         if($current->next == null) {
             return $str;
         }
         $current = $current->next;
-        return $this->RemoveDuplicatesLinkNodeRecursion($current);
+        return $this->removeDuplicatesLinkNodeRecursion($current);
     }
     //递归
-    public function RemoveDuplicatesLinkNodeRecursion($current) {
+    public function removeDuplicatesLinkNodeRecursion($current) {
         if($current->next != null) {
             if($current->val == $current->next->val) {
                 $current->next = $current->next->next;
-                return $this->RemoveDuplicatesLinkNodeRecursion($current);
+                return $this->removeDuplicatesLinkNodeRecursion($current);
             }
-            return $this->RemoveDuplicatesLinkNodeRecursion($current->next);
+            return $this->removeDuplicatesLinkNodeRecursion($current->next);
         }
     }
     //删除排过序的重复元素（while）
-    public function RemoveDuplicatesLinkNodeByWhile() {
+    public function removeDuplicatesLinkNodeByWhile() {
         $current = $this->header;
         $str = "链表为空!";
         if($current->next == null) {
@@ -177,6 +177,6 @@ $lists->addLink($i);
 $lists->addLink($j);
 //$lists->delLinkNode($c);
 //$lists->delLinkNode2($b);
-//echo $lists->RemoveDuplicatesLinkNode();
-echo $lists->RemoveDuplicatesLinkNodeByWhile();
+//echo $lists->removeDuplicatesLinkNode();
+echo $lists->removeDuplicatesLinkNodeByWhile();
 echo $lists->getLinkListVal();
