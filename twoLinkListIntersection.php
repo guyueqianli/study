@@ -70,7 +70,6 @@ echo "\n--- 第一个链表获取的值  ---\n";
 echo "\n++++++++++++++++++++++++++++\n";
 $a1 = new Node(2);
 $a2 = new Node(1);
-$a3 = new Node(1);
 $c1 = new Node(5);
 $c2 = new Node(2);
 $c3 = new Node(3);
