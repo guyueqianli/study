@@ -126,32 +126,18 @@ class SingelLinkList {
             if($val == $current->next->val) {
                 $current_val = $current->next->next;
                 $current->next = $current_val;
+            }else{
+                $current = $current->next;
             }
-            $current = $current->next;
-        }
-    }
-    // 根据值删除节点（考虑有2个重复的值连在一起）
-    public function delLinkNodeByVal2($val) {
-        $current = $this->header;
-        $str = "链表为空!";
-        if($current->next == null) {
-            return $str;
-        }
-        while($current->next != null){
-            while($val == $current->next->val) {
-                $current_val = $current->next->next;
-                $current->next = $current_val;
-            }
-            $current = $current->next;
         }
     }
 }
 $a = new Node(1);
 $b = new Node(2);
 $c = new Node(6);
-$d = new Node(3);
-$e = new Node(4);
-$f = new Node(6);
+$d = new Node(6);
+$e = new Node(6);
+$f = new Node(4);
 $g = new Node(6);
 $lists = new SingelLinkList();
 $lists->addLink($a);
@@ -167,8 +153,7 @@ echo "\n++++++++++++++++++++++++++++++++++++\n";
 echo "\n--------- 原来的链表val ------------\n";
 echo "\n++++++++++++++++++++++++++++++++++++\n";
 $lists->getLinkListVal();
-//$lists->delLinkNodeByVal(6);
-$lists->delLinkNodeByVal2(6);
+$lists->delLinkNodeByVal(6);
 echo "\n++++++++++++++++++++++++++++++++++++\n";
 echo "\n------ 根据val删除后的链表val ------\n";
 echo "\n++++++++++++++++++++++++++++++++++++\n";
