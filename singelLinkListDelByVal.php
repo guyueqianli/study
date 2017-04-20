@@ -126,7 +126,7 @@ class SingelLinkList {
             if($val == $current->next->val) {
                 $current_val = $current->next->next;
                 $current->next = $current_val;
-            }else{
+            }else {
                 $current = $current->next;
             }
         }
