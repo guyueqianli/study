@@ -19,5 +19,4 @@ function wukongchitao($n) {
     }
 
 }
-
 echo wukongchitao(5);
