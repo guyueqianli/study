@@ -9,9 +9,9 @@
 * F(3) = 2
 */
 function stairs($m) {
-	if ($m <= 1) {
-		return 0;
-	}
+    if ($m <= 1) {
+        return 0;
+    }
     if ($m == 2) {
         return 1;
     }
