@@ -50,7 +50,7 @@ class TwoLinkList {
         return $this->header;
     }
     //合并两个排序列表并返回一个新列表
-    public function MergeLinkList($firstLink, $secondLink) {
+    public function mergeLinkList($firstLink, $secondLink) {
         $current = $this->getLink();
         //firstLink 为null，返回secondLink
         if($firstLink->next == null) {
@@ -74,11 +74,11 @@ class TwoLinkList {
             if($firstLink->next->val <= $secondLink->next->val) {
                 $new_node = new Node($firstLink->next->val);
                 $this->addLink($new_node);
-                return $this->MergeLinkList($firstLink->next, $secondLink);
+                return $this->mergeLinkList($firstLink->next, $secondLink);
             } else {
                 $new_node = new Node($secondLink->next->val);
                 $this->addLink($new_node);
-                return $this->MergeLinkList($firstLink, $secondLink->next);
+                return $this->mergeLinkList($firstLink, $secondLink->next);
             }
         }
     }
@@ -113,5 +113,5 @@ echo "\n++++++++++++++++++++++++++++++++++++++++++\n";
 echo "\n--- 合并两个排序列表并返回一个新列表  ---\n";
 echo "\n++++++++++++++++++++++++++++++++++++++++++\n";
 $lists = new TwoLinkList();
-$lists->MergeLinkList($firstLink, $secondLink);
+$lists->mergeLinkList($firstLink, $secondLink);
 echo $lists->getLinkListVal();
