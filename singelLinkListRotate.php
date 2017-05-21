@@ -85,13 +85,20 @@ class SingleLinkList {
     * @param object $temp 链表
     * @param int $q 记录链表的第一个val
     */
+    // public function moveVal($temp,$q) {
+    //     if($temp->next != null) {
+    //         $temp->val = $temp->next->val;
+    //         return $this->moveVal($temp->next,$q);
+    //     }
+    //     $temp->val = $q;
+    // }
     public function moveVal($temp,$q) {
-        while ($temp->next != null) {
-            $temp->val = $temp->next->val;
-            return $this->moveVal($temp->next,$q);
-        }
-        $temp->val = $q;
-    }
+         while($temp->next != null) {
+             $temp->val = $temp->next->val;
+             $temp = $temp->next;
+         }
+         $temp->val = $q;
+     }
 
 
 }
