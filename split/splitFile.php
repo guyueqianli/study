@@ -26,14 +26,13 @@ function splitFile($file) {
     if(!file_exists($splitPwd)) {
         mkdir($splitPwd);
     }
-    // 在 split 目录下 生成 9 个 json_0 ~ 9 的空文件
+    // 在 split 目录下 先生成 9 个 json_0 ~ 9 的空文件
     $splitFileName = $splitPwd . '/json_';
     $default = 10;
     for($i = 0; $i < $default; $i++) {
         $lastFile = $splitFileName . $i;
         file_put_contents($lastFile, '');
     }
-    // $fileInfo = file_get_contents($filename);
     // 逐行读取 原文件 json 内容, 将每行内容按 \t 进行分割, 只取前订单id 的值, 将 id 进行取余, 然后根据取余的数再将该行内容写入对应的文件中
     $handle = fopen($filename, 'r');
     while(!feof($handle)) {
